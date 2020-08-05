@@ -8,25 +8,36 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "LPN")
+@JsonInclude(JsonInclude.Include. NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LPN {
 
 	@Id
 	@GeneratedValue
 	@Column(name="LPN_ID")
+	@JsonProperty("LPN_ID")
 	private Long lpnId;
 	
 	@Column(name="TC_LPN_ID")
+	@JsonProperty("TC_LPN_ID")
 	private String tcLpnId;
 	
 	@Column(name="ITEM_NAME")
+	@JsonProperty("ITEM_NAME")
 	private String itemName;
 	
 	@Column(name="CREATED_DTTM")
+	@JsonProperty("CREATED_DTTM")
 	private Date createdDttm;
 	
 	@Column(name="UPDATED_DTTM")
+	@JsonProperty("UPDATED_DTTM")
 	private Date updatedDttm;
 
 	public Long getLpnId() {
